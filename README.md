@@ -23,3 +23,7 @@ id=1342622
 
 支持嵌套Array类型的集合Bean生成。
 
+## 原理
+
+freemarker+httpclient
+可自己定制开发
