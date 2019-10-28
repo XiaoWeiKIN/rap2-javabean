@@ -96,17 +96,36 @@ public class EntityClass {
                 attribute.setName((String) data.get("name"));
                 attribute.setDesc((String) data.get("description"));
                 String type = (String) data.get("type");
+                // 处理number
+                if (StringUtils.equals("Number", type)) {
+                    type = "Integer";
+                    String value = (String) data.get("value");
+                    if (StringUtils.equals("Double", value)) {
+                        type = "Double";
+                    }
+                }
                 // 处理array类型
                 if (StringUtils.equals("Array", type)) {
-                    String name = (String) data.get("name");
-                    String scope = (String) data.get("scope");
-                    name = toUpperCaseFirst(name);
-                    if ("request".equals(scope)) {
-                        name = url + "Request" + name + "Model";
-                    } else if ("response".equals(scope)) {
-                        name = url + "Response" + name + "Model";
+                    String value = (String) data.get("value");
+                    if (StringUtils.equals("String", value)) {
+                        attribute.setType("List<String>");
+                    } else if (StringUtils.equals("Integer", value)) {
+                        attribute.setType("List<Integer>");
+                    } else if (StringUtils.equals("Double", value)) {
+                        attribute.setType("List<Double>");
+                    } else if (StringUtils.equals("Boolean", value)) {
+                        attribute.setType("List<Boolean>");
+                    } else { //object
+                        String name = (String) data.get("name");
+                        String scope = (String) data.get("scope");
+                        name = toUpperCaseFirst(name);
+                        if ("request".equals(scope)) {
+                            name = url + "Request" + name + "Model";
+                        } else if ("response".equals(scope)) {
+                            name = url + "Response" + name + "Model";
+                        }
+                        attribute.setType("List<" + name + ">");
                     }
-                    attribute.setType("List<" + name + ">");
                     imports.add("import java.util.List");
                 } else {
                     attribute.setType(type);
