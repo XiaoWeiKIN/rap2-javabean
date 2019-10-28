@@ -32,10 +32,9 @@ public class BeanGeneratorTest {
     }
 }
 
-```
+![Image text](https://github.com/IndiraFinish/rap2-javabean/blob/master/src/main/resources/image/B813B703-8589-456d-8C99-539A9D2A29BD.png)
 
 ## 原理
 
-freemarker+httpclient
-可自己定制开发
+freemarker+httpclient 可自己定制开发
 
