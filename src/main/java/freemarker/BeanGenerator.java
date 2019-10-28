@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 public class BeanGenerator {
 
-    public void Generator() {
+    public void generator() {
         RapHttpClient rapHttpClient = new RapHttpClient();
         String ids = PropertiesUtils.get("id");
         Arrays.asList(StringUtils.split(ids,",")).forEach(

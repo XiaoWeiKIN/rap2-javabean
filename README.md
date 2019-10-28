@@ -23,7 +23,19 @@ id=1342622
 
 支持嵌套Array类型的集合Bean生成。
 
+```
+public class BeanGeneratorTest {
+
+    public static void main(String[] args) {
+        BeanGenerator beanGenerator = new BeanGenerator();
+        beanGenerator.generator();
+    }
+}
+
+```
+
 ## 原理
 
 freemarker+httpclient
 可自己定制开发
+
